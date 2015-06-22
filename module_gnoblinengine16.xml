@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_gnoblinengine16" default="compile.module.gnoblinengine16">
+  <dirname property="module.gnoblinengine16.basedir" file="${ant.file.module_gnoblinengine16}"/>
+  
+  <property name="module.jdk.home.gnoblinengine16" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.gnoblinengine16" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.gnoblinengine16" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.gnoblinengine16" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="gnoblinengine16.output.dir" value="${module.gnoblinengine16.basedir}/out/production/GnoblinEngine16"/>
+  <property name="gnoblinengine16.testoutput.dir" value="${module.gnoblinengine16.basedir}/out/test/GnoblinEngine16"/>
+  
+  <path id="gnoblinengine16.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="gnoblinengine16.module.production.classpath">
+    <path refid="${module.jdk.classpath.gnoblinengine16}"/>
+  </path>
+  
+  <path id="gnoblinengine16.runtime.production.module.classpath">
+    <pathelement location="${gnoblinengine16.output.dir}"/>
+  </path>
+  
+  <path id="gnoblinengine16.module.classpath">
+    <path refid="${module.jdk.classpath.gnoblinengine16}"/>
+    <pathelement location="${gnoblinengine16.output.dir}"/>
+  </path>
+  
+  <path id="gnoblinengine16.runtime.module.classpath">
+    <pathelement location="${gnoblinengine16.testoutput.dir}"/>
+    <pathelement location="${gnoblinengine16.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.gnoblinengine16">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.gnoblinengine16">
+    <patternset refid="excluded.from.module.gnoblinengine16"/>
+  </patternset>
+  
+  
+  <target name="compile.module.gnoblinengine16" depends="compile.module.gnoblinengine16.production,compile.module.gnoblinengine16.tests" description="Compile module GnoblinEngine16"/>
+  
+  <target name="compile.module.gnoblinengine16.production" depends="register.custom.compilers" description="Compile module GnoblinEngine16; production classes"/>
+  
+  <target name="compile.module.gnoblinengine16.tests" depends="register.custom.compilers,compile.module.gnoblinengine16.production" description="compile module GnoblinEngine16; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.gnoblinengine16" description="cleanup module">
+    <delete dir="${gnoblinengine16.output.dir}"/>
+    <delete dir="${gnoblinengine16.testoutput.dir}"/>
+  </target>
+</project>
